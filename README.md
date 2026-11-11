@@ -1,5 +1,7 @@
 # HSSR-SLOPE
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24141844.svg)](https://doi.org/10.5281/zenodo.24141844)
+
 MATLAB and Python code of HSSR-SLOPE, an algorithm that reconstructs the
 photoplethysmographic (PPG) waveform recorded at the wrist and detects its
 beats, so that inter-beat intervals can be used for heart rate variability
