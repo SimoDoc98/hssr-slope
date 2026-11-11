@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article below."
+title: "HSSR-SLOPE: PPG waveform reconstruction and beat detection for heart rate variability analysis"
+type: software
+version: 1.0.0
+license: BSD-2-Clause
+authors:
+  - family-names: Costantini
+    given-names: Simone
+    orcid: "https://orcid.org/0009-0001-5104-6733"
+    affiliation: "Politecnico di Milano"
+repository-code: "https://github.com/SimoDoc98/hssr-slope"
+preferred-citation:
+  type: article
+  status: submitted
+  title: "Towards Reliable PPG-based Heart Rate Variability Analysis: Applications to Human Activity and Emotion Recognition"
+  authors:
+    - family-names: Costantini
+      given-names: Simone
+    - family-names: Bianchi
+      given-names: Anna Maria

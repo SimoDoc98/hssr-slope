@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hssr-slope"
+version = "1.0.0"
+description = "PPG waveform reconstruction (HSSR) and beat detection (SLOPE) for heart rate variability analysis"
+license = { text = "BSD-2-Clause" }
+authors = [{ name = "Simone Costantini", email = "simone.costantini@polimi.it" }]
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy", "matplotlib", "statsmodels"]
+
+[project.optional-dependencies]
+examples = ["pandas", "openpyxl"]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["hssr_slope"]
