@@ -28,8 +28,7 @@ class OptimizationResult:
     grid : array of shape (n_points, n_factors)
         Dense grid of parameter values.
     predicted : array of shape (n_points, n_responses)
-        Linear predictor of each response on the dense grid (logarithm of the
-        response for the models with a gamma distribution).
+        Predicted responses on the dense grid, on the scale of the measurements.
     models : list
         Fitted regression model of each response (statsmodels results).
     families : list of str
@@ -68,7 +67,7 @@ def _fit_response(design, y, family):
         return fits[0], names[0]
     # Same selection criterion as the MATLAB implementation
     k = design.shape[1]
-    score = [abs(2 * k - np.log(complex(m.llf))) for m in fits]
+    score = [2 * k - 2 * m.llf for m in fits]  # Akaike information criterion
     best = int(np.argmin(score))
     return fits[best], names[best]
 
@@ -116,7 +115,8 @@ def optimize_parameters(x, y, directions, importance, dense_grid, *,
     for i in range(y.shape[1]):
         model, name = _fit_response(design, y[:, i], family)
         beta = np.where(model.pvalues < alpha, model.params, 0.0)
-        predicted[:, i] = grid_design @ beta
+        eta = grid_design @ beta
+        predicted[:, i] = np.exp(eta) if name == "gamma" else eta
         models.append(model)
         families.append(name)
 
@@ -133,8 +133,7 @@ def optimize_parameters(x, y, directions, importance, dense_grid, *,
 
     gd = np.prod(desirability ** r, axis=1) ** (1.0 / r.sum())
     k = int(np.argmax(gd))
-    best_responses = np.array([np.exp(v) if name == "gamma" else v
-                               for v, name in zip(predicted[k], families)])
+    best_responses = predicted[k].copy()
     return OptimizationResult(grid[k], best_responses, gd, grid, predicted,
                               models, families)
 

@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite the article below."
 title: "HSSR-SLOPE: PPG waveform reconstruction and beat detection for heart rate variability analysis"
 type: software
-version: 1.0.0
+version: 1.1.0
 doi: 10.5281/zenodo.24141844
 license: BSD-2-Clause
 authors:

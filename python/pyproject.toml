@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hssr-slope"
-version = "1.0.0"
+version = "1.1.0"
 description = "PPG waveform reconstruction (HSSR) and beat detection (SLOPE) for heart rate variability analysis"
 license = { text = "BSD-2-Clause" }
 authors = [{ name = "Simone Costantini", email = "simone.costantini@polimi.it" }]

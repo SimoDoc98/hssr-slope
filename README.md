@@ -111,10 +111,12 @@ sensitivity analysis of the Walking condition of the PPG-DaLiA dataset.
 `data/Sensitivity_Analysis_PPGDalia.xlsx` and
 `data/Sensitivity_Analysis_WESAD.xlsx` contain the full sensitivity analysis of
 the paper: for each of the 270 combinations of RO, CT and HT, the quartiles of
-the beat detection F1-score and the limits of agreement of AVNN, SDNN, RMSSD,
-LF and HF, in eight conditions of the PPG-DaLiA and WESAD datasets.
+the beat detection F1-score and the natural logarithm of the limit of agreement
+width of AVNN, SDNN, RMSSD, LF and HF (Bland-Altman analysis on log-transformed
+PPG/ECG ratios; the width is the limit farthest from 1, as a fold difference),
+in eight conditions of the PPG-DaLiA and WESAD datasets.
 `robustness_importance` (MATLAB and Python) uses them to check how much the
-selected parameters depend on the importance values (Supplementary Table 4 of
+selected parameters depend on the importance values (Supplementary Table 5 of
 the paper).
 
 The raw recordings are not included. They are available from the authors of

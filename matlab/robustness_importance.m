@@ -7,7 +7,7 @@
 % tested combinations of Reconstruction Order (RO) and Harmonics Tolerance
 % (HT), with Correlation Tolerance fixed at 0.025.
 %
-% Output: robustness_importance.csv (Supplementary Table 4 of the paper)
+% Output: robustness_importance.csv (Supplementary Table 5 of the paper)
 
 clear
 close all
@@ -22,8 +22,8 @@ conditions = {["Rest","Cycling","Walking","Working"], ...
               ["Baseline","Meditation","Amusement","Stress"]};
 
 % Parameters selected in the paper (RO, HT), in the same order as above
-selected = [128 0.40; 256 0.25; 288 0.15; 224 0.10; ...
-            256 0.35; 224 0.35; 256 0.20; 256 0.10];
+selected = [256 0.25; 256 0.15; 288 0.10; 320 0.10; ...
+            224 0.10; 192 0.25; 256 0.10; 288 0.25];
 
 % Optimization setup (same as in the paper)
 options.direction = ["max","max","max","min","min","min","min","min"];

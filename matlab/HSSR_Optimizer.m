@@ -30,7 +30,7 @@ function [x_opt,results] = HSSR_Optimizer(x,y,options)
 %       y_opt   responses predicted at x_opt (scale of the measurements)
 %       GD      Global Desirability on the grid
 %       x_grid  grid of parameters (one row for each point)
-%       y_hat   linear predictor of each response on the grid
+%       y_hat   predicted responses on the grid (scale of the measurements)
 %       models  fitted regression models
 %
 %   Copyright (c) 2025 Simone Costantini, Politecnico di Milano.
@@ -73,7 +73,7 @@ for i = 1:N_y
 
     for j = 1:length(distributions)
         glm_yij{j} = fitglm(tbl,model,"Distribution",distributions(j),"DispersionFlag",true,"Link",link_functions(j),"Intercept",true);
-        AIC(j) = 2*glm_yij{j}.NumEstimatedCoefficients - log(glm_yij{j}.LogLikelihood);
+        AIC(j) = 2*glm_yij{j}.NumEstimatedCoefficients - 2*glm_yij{j}.LogLikelihood;
     end
 
     % Selecting the best distribution
@@ -114,6 +114,9 @@ for i = 1:N_y
 
 end
 
+% Back-transformation of the responses fitted with a log link
+y_hat(:,is_log_link) = exp(y_hat(:,is_log_link));
+
 %% Multiple Response Optimization
 
 % Desirability of each response variable
@@ -144,7 +147,6 @@ GD = GD.^(1/sum(r));
 x_opt = x_grid(GD_idx_max,:);
 
 y_opt = y_hat(GD_idx_max,:);
-y_opt(is_log_link) = exp(y_opt(is_log_link));
 
 results.y_opt = y_opt;
 results.GD = GD;

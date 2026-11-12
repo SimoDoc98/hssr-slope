@@ -26,9 +26,9 @@ FILES = {
 }
 
 # Parameters selected in the paper (RO, HT)
-SELECTED = {"Rest": (128, 0.40), "Cycling": (256, 0.25), "Walking": (288, 0.15),
-            "Working": (224, 0.10), "Baseline": (256, 0.35), "Meditation": (224, 0.35),
-            "Amusement": (256, 0.20), "Stress": (256, 0.10)}
+SELECTED = {"Rest": (256, 0.25), "Cycling": (256, 0.15), "Walking": (288, 0.10),
+            "Working": (320, 0.10), "Baseline": (224, 0.10), "Meditation": (192, 0.25),
+            "Amusement": (256, 0.10), "Stress": (288, 0.25)}
 
 DIRECTIONS = ["max", "max", "max", "min", "min", "min", "min", "min"]
 IMPORTANCE = np.array([1, 2, 1, 3, 3, 3, 3, 3])
